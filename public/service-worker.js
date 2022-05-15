@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 const APP_PREFIX = 'TransactionEvent-';     
 const VERSION = 'version_01';
@@ -12,7 +11,7 @@ const FILES_TO_CACHE = [
     '/icons/icon-72x72.png',
     '/icons/icon-96x96.png',
     '/icons/icon-128x128.png',
-    '/icons/icon-144x144.png',
+    //'/icons/icon-144x144.png',
     '/icons/icon-152x152.png',
     '/icons/icon-192x192.png',
     '/icons/icon-384x384.png',
@@ -81,8 +80,20 @@ self.addEventListener('fetch', function (evt) {
                 })
             })
             .catch(err => console.log(err))
-        )
+        );
+        return;
     }
+    evt.respondWith(
+        fetch(evt.request).catch(function () {
+            return caches.match(evt.request).then(function (response) {
+                if (response) {
+                    return response;
+                } else if (evt.request.headers.get('accept').incldues('text/html')) {
+                    return caches.match('/')
+                }
+            })
+        })
+    )
 })
         
         
