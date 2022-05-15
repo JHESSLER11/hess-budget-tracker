@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 const APP_PREFIX = 'TransactionEvent-';     
 const VERSION = 'version_01';
 const CACHE_NAME = APP_PREFIX + VERSION
@@ -66,7 +68,19 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (evt) {
     if (evt.request.url.incldues('/api/')) {
         evt.respondWith(
-            
+            caches.open(CACHE_NAME).then(cache => {
+                return fetch(evt.request)
+                .then(response => {
+                    if (response.status === 200) {
+                        cache.put(evt.request.url, response.clone());
+                    }
+                    return response;
+                })
+                .catch(err => {
+                    return cache.match(evt.request);
+                })
+            })
+            .catch(err => console.log(err))
         )
     }
 })
