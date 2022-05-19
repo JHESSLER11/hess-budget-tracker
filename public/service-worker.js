@@ -65,7 +65,7 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (evt) {
-    if (evt.request.url.incldues('/api/')) {
+    if (evt.request.url.includes("/api/")) {
         evt.respondWith(
             caches.open(CACHE_NAME).then(cache => {
                 return fetch(evt.request)
@@ -88,7 +88,7 @@ self.addEventListener('fetch', function (evt) {
             return caches.match(evt.request).then(function (response) {
                 if (response) {
                     return response;
-                } else if (evt.request.headers.get('accept').incldues('text/html')) {
+                } else if (evt.request.headers.get('accept').includes('text/html')) {
                     return caches.match('/')
                 }
             })
