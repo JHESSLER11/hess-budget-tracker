@@ -27,6 +27,6 @@
   
 
   ## Screen Shot of Main Page
-  ![Alt text](https://github.com/JHESSLER11/hess-budget-tracker/tree/main/public/images)
+  ![Alt text]((https://github.com/JHESSLER11/hess-budget-tracker/blob/main/public/images/budget_tracker.png)
 
   
