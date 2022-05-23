@@ -13,7 +13,6 @@ request.onupgradeneeded = function(event) {
 
 request.onsuccess = function (event) {
     db = event.target.result;
-    console.log('bang', db)
 
     if (navigator.onLine) {
         uploadTransaction()
@@ -24,8 +23,6 @@ request.onerror = function(event) {
 };
 
 function saveRecord(record) {
-    console.log('RECORD ', record)
-    console.log('DB ', db)
     const transaction = db.transaction(['new_transaction'], 'readwrite');
     console.log('TRANSACTION ', transaction)
     const store = transaction.objectStore('new_transaction');
