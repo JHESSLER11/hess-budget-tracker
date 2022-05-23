@@ -27,11 +27,6 @@
   
 
   ## Screen Shot of Main Page
-  ![Alt text](https://github.com/JHESSLER11/Tech-Blog/blob/main/assets/images/front-page.png)
-  
-  ## Screen shot of Login Page
-  ![Alt text](https://github.com/JHESSLER11/Tech-Blog/blob/main/assets/images/login.png) 
-  
-  ## Screen shot of Dashboard Page
-  ![Alt text]( https://github.com/JHESSLER11/Tech-Blog/blob/main/assets/images/dashboard.png)
+  ![Alt text](https://github.com/JHESSLER11/hess-budget-tracker/tree/main/public/images)
+
   
